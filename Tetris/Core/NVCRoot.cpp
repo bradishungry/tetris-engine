@@ -8,16 +8,27 @@ NVCRoot::~NVCRoot() {}
 
 void NVCRoot::startUp() {
   createWindow();
-  gRenderManager.startUp(m_hWnd);
   gInputManager.startUp();
+  gSaveManager.startUp();
+  gRenderManager.startUp(m_hWnd);
 }
 
 void NVCRoot::shutDown() {
 	gRenderManager.shutDown();
+  gSaveManager.shutDown();
 	gInputManager.shutDown();
 }
 
 void NVCRoot::runGame() {
+    auto list = gSaveManager.scoreList;
+    for (int i = 0; i < gSaveManager.scoreCount; i += 1) {
+        char buffer[256];
+        sprintf_s(buffer, "Player: %s, Score: %d, Date: %s\n",
+            list->playerName, list->score, list->date);
+        OutputDebugStringA(buffer);
+        list += 1;
+    }
+
   LARGE_INTEGER perfCountFrequencyResult;
   QueryPerformanceFrequency(&perfCountFrequencyResult);
   LONGLONG perfCountFrequency = perfCountFrequencyResult.QuadPart;
@@ -40,9 +51,7 @@ void NVCRoot::runGame() {
       TranslateMessage(&msg);
       DispatchMessage(&msg);
     } else {
-        if (gInputManager.controller.forward) {
-            OutputDebugStringA("Pressed\n");
-      }
+        gInputManager.pollGamepadInputs();
       gRenderManager.setDegreeAngle(&gInputManager.controller);
       gRenderManager.update();
       gRenderManager.draw();

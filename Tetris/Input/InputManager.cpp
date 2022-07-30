@@ -69,6 +69,14 @@ void InputManager::pollGamepadInputs() {
       controller.right = (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT);
       controller.xButton = (state.Gamepad.wButtons & XINPUT_GAMEPAD_X);
       controller.yButton = (state.Gamepad.wButtons & XINPUT_GAMEPAD_Y);
+      XINPUT_VIBRATION vibe;
+      vibe.wLeftMotorSpeed = 0;
+      vibe.wRightMotorSpeed = 0;
+      if (controller.actButton) {
+          vibe.wLeftMotorSpeed = 60000;
+          vibe.wRightMotorSpeed = 60000;
+      }
+      XInputSetState(i, &vibe);
     } else {
       // No Controller
     }

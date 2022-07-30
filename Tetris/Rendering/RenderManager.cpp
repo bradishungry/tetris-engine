@@ -69,7 +69,7 @@ void RenderManager::draw() {
   auto renderTarget = m_pRenderTarget.Get();
   auto depthStencilView = m_pDepthStencilView.Get();
   // Clear the render target and the z-buffer.
-  const float teal[] = {0.098f, 0.439f, 0.439f, 1.000f};
+  float teal[] = {((float)yAngle / 1000.0), 0.439f, 0.439f, 1.000f};
   m_pd3dDeviceContext->ClearRenderTargetView(renderTarget, teal);
   m_pd3dDeviceContext->ClearDepthStencilView(
       depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);

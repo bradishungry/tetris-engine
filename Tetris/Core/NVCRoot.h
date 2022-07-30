@@ -4,6 +4,7 @@
 #include <string>
 #include "RenderManager.h"
 #include "InputManager.h"
+#include "SaveManager.h"
 #define global_variable static
 
 class NVCRoot {
@@ -28,4 +29,5 @@ static HINSTANCE hInstance;
 static std::wstring windowClassName;
 global_variable RenderManager gRenderManager;
 global_variable InputManager gInputManager;
+global_variable SaveManager gSaveManager;
 global_variable bool Running;
