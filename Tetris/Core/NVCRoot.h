@@ -2,10 +2,10 @@
 
 #include <Windows.h>
 #include <string>
+#include "definitions.h"
 #include "RenderManager.h"
 #include "InputManager.h"
 #include "SaveManager.h"
-#define global_variable static
 
 class NVCRoot {
 public:
@@ -25,8 +25,8 @@ private:
   HWND m_hWnd;
 };
 
-static HINSTANCE hInstance;
-static std::wstring windowClassName;
+global_variable HINSTANCE hInstance;
+global_variable std::wstring windowClassName;
 global_variable RenderManager gRenderManager;
 global_variable InputManager gInputManager;
 global_variable SaveManager gSaveManager;

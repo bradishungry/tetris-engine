@@ -1,7 +1,5 @@
-#include <Windows.h>
-#include <string>
 #include "NVCRoot.h"
-#include "RenderManager.h"
+
 NVCRoot::NVCRoot() {}
 
 NVCRoot::~NVCRoot() {}
@@ -14,9 +12,9 @@ void NVCRoot::startUp() {
 }
 
 void NVCRoot::shutDown() {
-	gRenderManager.shutDown();
+  gRenderManager.shutDown();
   gSaveManager.shutDown();
-	gInputManager.shutDown();
+  gInputManager.shutDown();
 }
 
 void NVCRoot::runGame() {
@@ -32,7 +30,7 @@ void NVCRoot::runGame() {
   LARGE_INTEGER perfCountFrequencyResult;
   QueryPerformanceFrequency(&perfCountFrequencyResult);
   LONGLONG perfCountFrequency = perfCountFrequencyResult.QuadPart;
-
+  
   // The render lpop is controlled here.
   bool bGotMsg;
   MSG msg;

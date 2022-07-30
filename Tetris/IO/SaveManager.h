@@ -1,8 +1,9 @@
 #pragma once
-#include <cstdint>
+#include "definitions.h"
+#include "StackAllocator.h"
 
 typedef struct _score {
-    uint32_t score;
+    u32 score;
     char playerName[256];
     char date[256];
 } ScoreData;
@@ -16,5 +17,5 @@ public:
     void saveScore(uint32_t score);
     void loadScores();
     ScoreData *scoreList;
-    uint16_t scoreCount;
+    u16 scoreCount;
 };

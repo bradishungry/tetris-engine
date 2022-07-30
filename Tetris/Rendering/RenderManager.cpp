@@ -30,13 +30,7 @@ void RenderManager::startUp(HWND hWnd) {
 void RenderManager::shutDown() {}
 
 void RenderManager::update() {
-    /*if (input.left) {
-        m_frameCount++;
-    }
-    if (input.right) {
-        m_frameCount--;
-    }*/
-  // Rotate the cube 1 degree per frame.
+  // Rotate the cube based off input
   DirectX::XMStoreFloat4x4(
       &m_constantBufferData.world,
       DirectX::XMMatrixMultiplyTranspose(DirectX::XMMatrixRotationY(

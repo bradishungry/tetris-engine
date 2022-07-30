@@ -10,7 +10,7 @@ void InputManager::startUp() {}
 
 void InputManager::shutDown() {}
 
-void InputManager::pollKeyboardInputs(uint32_t kbCode, bool wasDown, bool isDown){
+void InputManager::pollKeyboardInputs(u32 kbCode, bool wasDown, bool isDown){
     if(wasDown != isDown){
     switch(kbCode){
         case 'W':
